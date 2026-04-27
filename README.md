@@ -127,6 +127,44 @@ Body:
 GET /tasks
 ```
 
+#### Query Parameters (Optional)
+
+| Parameter   | Type    | Description                     |
+|------------|--------|---------------------------------|
+| page       | number | Page number (default: 1)         |
+| limit      | number | Items per page (default: 5)      |
+| completed  | boolean| Filter by completion status      |
+
+#### Examples
+
+Get first page:
+
+```bash
+GET /tasks?page=1&limit=5 
+```
+
+Get completed tasks:
+
+```bash
+GET /tasks?completed=true
+```
+
+Combined:
+```bash
+GET /tasks?completed=false&page=2&limit=3
+``` 
+
+#### Response
+
+```json 
+{   
+    "total": 10,   
+    "page": 1,   
+    "pages": 2,   
+    "tasks": [] 
+}
+```
+
 ---
 
 #### Update Task

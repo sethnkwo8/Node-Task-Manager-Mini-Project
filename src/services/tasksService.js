@@ -8,8 +8,15 @@ export async function createTask(title, description, userId) {
     })
 }
 
-export async function getTasks(userId) {
-    return await Task.find({userId});
+export async function getTasks(filter, page, limit) {
+    const total = await Task.countDocuments(filter);
+
+    const tasks = await Task.find(filter)
+        .skip((page -1) * limit)
+        .limit(limit)
+        .sort({createdAt: -1});
+
+    return {total, tasks}
 }
 
 export async function deleteTask(id, userId) {
