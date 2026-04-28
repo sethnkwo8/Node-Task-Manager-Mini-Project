@@ -22,6 +22,6 @@ app.use("/tasks", tasksRoutes)
 
 app.use(errorHandler)
 
-connectDB();
+await connectDB();
 
 app.listen(PORT)
